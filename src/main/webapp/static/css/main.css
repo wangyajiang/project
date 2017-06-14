@@ -1,0 +1,56 @@
+/*焦点图*/
+.focus-map-outer-box{position:relative;height:5.8rem;}
+.focus-map-box{width:100%;height:5.8rem;overflow:hidden;position:relative;background-color:#f1f1f1;}
+.focus-map-box>ul{height:100%;overflow:hidden;}
+.focus-map-box>ul>li{position:absolute;width:100%;height:100%;overflow:hidden;display:-webkit-box;-webkit-box-pack:center;-webkit-box-align:center;}
+.focus-map-box>ul>li>img,.focus-map-box>ul>li>a>img{width:100%;max-height:100%;}
+.focus-map-box-dot{position:absolute;bottom:1.2rem;width:100%;z-index:9;height:1.2rem;}
+	
+.main-menu{width:100%;height:3.5rem;border-bottom:0.05rem solid #f2f2f2;}
+table.main-menu-tab{border-collapse:collapse;border-spacing:0;width:100%;height:100%;}
+table.main-menu-tab>tbody,table.main-menu-tab>tbody>tr{width:100%;height:100%;}
+table.main-menu-tab>tbody>tr>td{width:25%;height:100%;}
+table.main-menu-tab .menu-box{position:relative;text-align:center;width:100%;height:100%;}
+table.main-menu-tab .menu-box>.img-ico{width:100%;height:2.3rem;line-height:2.3rem;font-size:1rem;}
+table.main-menu-tab .menu-box.active>.img-ico{color:#ff6600;}
+table.main-menu-tab .menu-box>.img-title{color:#333;}
+
+.new-notice-box{height:2.1rem;line-height:2.1rem;position:relative;}
+.main-split{height:0.4rem;background:#e6e6e6;}
+.notice-logo{display:inline-block;font-size:1rem;padding-left:0.8rem;color:#666;padding-top: 0.05rem;}
+.notice-content{position:relative;height:2.1rem;box-sizing:border-box;top:0;left:0;position:absolute;width:100%;padding-left:2.1rem;padding-right:0.5rem;color:#bbb;overflow:hidden;}
+.new-publish-more{height:1.5rem;padding-left:0.4rem;padding-right:0.4rem;color:#666;line-height:1.5rem;border-bottom:1px solid #f1f1f1;}
+.new-publish-more>i{font-size:1rem;float:right;margin-top:0.3rem;color:#cacaca;}
+.notice-content>ul>li{height:2.1rem;line-height:2.1rem;width:100%;overflow:hidden;}
+
+/*最新揭晓*/
+.new-publish-items-box{height:7.5rem;}
+.new-publish-items-box .publish-box{width:5.333rem;height:7.5rem;float:left;}
+.new-publish-items-box .publish-box>.item-logo{width:4.3rem;height:4rem;line-height:4rem;text-align:center;margin:auto;position:relative;padding:0.3rem 0.1rem;}
+.new-publish-items-box .publish-box>.item-logo>img{width:100%;height:100%;}
+.new-publish-items-box .publish-box>.item-title{width:4.5rem;height:1.2rem;overflow:hidden;margin:auto;text-align:center;font-size:0.5rem;line-height:0.6rem;padding-top:0.25rem;color:#555;}
+.new-publish-items-box .publish-box>.item-time{width:4.5rem;height:1.35rem;text-align:center;line-height:1.35rem;overflow:hidden;margin:auto;font-size:0.7rem;color:#f10;}
+
+/*首页商品列表*/
+.item-list{}
+.item-list>.item-box{height:10.5rem;border-bottom:0.05rem solid #f4f4f4;float:left;width:7.475rem;padding:0.25rem 0.25rem;position:relative;}
+.item-list>.item-box:nth-child(2n+1){border-right:0.05rem solid #f4f4f4;}
+.item-list>.item-box>.item-logo{width:100%;height:7.45rem;line-height:7.45rem;text-align:center;overflow:hidden;}
+.item-list>.item-box>.item-logo>img{max-width:100%;height:100%;}
+.item-list>.item-box>.item-title{width:100%;height:1.2rem;overflow:hidden;margin:auto;font-size:0.5rem;line-height:0.6rem;padding-top:0.25rem;color:#555;}
+.item-list>.item-box>.open-box{width:4.2rem;padding-top:0.2rem;}
+.item-list>.item-box>.open-box>.name{width:5rem;color:#d1d1d1;height:0.6rem;font-size:0.45rem;padding-bottom:0.2rem;}
+.item-list>.item-box>.open-box>.name>span{color:#6d97f7;font-size:0.5rem;margin-left:0.2rem;}
+.item-box .sui-process{height:0.45rem;-webkit-border-radius:0.1rem;-moz-border-radius:0.1rem;border-radius:0.2rem;}
+.item-list>.item-box>a.sui-btn{position:absolute;right:0.25rem;bottom:0.35rem;display:inline-block;}
+
+.outer-menu{width:100%;height:2.1rem;}
+.menu-sec-head{display:block;position:absolute;z-index:11;top:1.8rem;background:#fff;width:100%;height:2.1rem;}
+
+@-webkit-keyframes goOutTop {0% {margin-top:0px;}100%{margin-top:-2.1rem;}}
+@keyframes goOutTop {0% {margin-top:0px;}100%{margin-top:-2.1rem;}}
+@-webkit-keyframes goOutBottom {0% {margin-top:0px;}100%{margin-top:-2.1rem;}}
+@keyframes goOutBottom {0% {margin-top:0px;}100%{margin-top:-2.1rem;}}
+.slide-run .move-top{animation:goOutTop 1s ease 2s 1 forwards;-webkit-animation:goOutTop 1s ease 2s 1 forwards;}
+.slide-run .move-bottom{animation:goOutTop 1s ease 2s 1 forwards;-webkit-animation:goOutTop 1s ease 2s 1 forwards;}
+

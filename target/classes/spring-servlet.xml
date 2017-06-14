@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+        http://www.springframework.org/schema/context      
+        http://www.springframework.org/schema/context/spring-context-4.3.xsd
+        http://www.springframework.org/schema/mvc      
+        http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+        http://www.springframework.org/schema/tx      
+        http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- 启动Spring的支持注解 -->
+	<context:annotation-config />
+
+	<!-- @Controller 请求映射注解扫描 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<!-- 展示层数据信息转换json -->
+			<!--避免IE执行AJAX时，返回JSON出现下载文件 -->  
+			<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html;charset=UTF-8</value>
+						<value>text/plain;charset=UTF-8</value>
+						<value>text/json;charset=UTF-8</value>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+			<!-- string -->
+			<bean id="stringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter" />
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	<!-- 组件扫描,对包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 -->
+	<context:component-scan base-package="com.pro.conntroller">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+	</context:component-scan>
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	<!-- 拦截器 
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/"/>
+			<bean class="com.easy.pis.web.interceptor.AdminLoginInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	-->
+	<!-- 配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理，3.04新增功能，需要重新设置spring-mvc-3.0.xsd -->
+	<mvc:resources location="/static/images/" mapping="/images/**" />
+	<mvc:resources location="/static/js/" mapping="/js/**" />
+	<mvc:resources location="/static/css/" mapping="/css/**" />
+	<mvc:resources location="/pages/" mapping="/pages/**" />
+
+	<!-- 定义视图文件解析 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/pages/"/>
+		<!-- <property name="suffix" value=""/> -->
+	</bean>
+
+	<!-- Configure the multipart resolver 上传文件解析器-->
+	<!-- 配置文件上传，如果没有使用文件上传可以不用配置，当然如果不配，那么配置文件中也不必引入上传组件包 -->  
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding">
+			<value>UTF-8</value>
+		</property>
+		<property name="maxUploadSize">
+			<value>5242880</value><!-- 上传文件大小限制为5M，5*1024*1024 -->
+		</property>
+		<property name="maxInMemorySize">
+			<value>4096</value>
+		</property>
+	</bean>
+
+	<!-- 基于Cookie的本地化解析器
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+	 	<property name="cookieMaxAge" value="604800"/>
+	 	<property name="defaultLocale" value="zh_CN"/>
+	 	<property name="cookieName" value="Language"></property>
+	</bean> -->
+	
+	<!-- 配置文件 -->
+	<bean id="propConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:prop/pro_config.properties" />
+	</bean>
+	<import resource="classpath:spring-applicationcontext/*.xml" />
+	<import resource="spring-cache.xml" />
+	
+	 <bean class="com.pro.servlet.InitStart"/>  
+</beans> 

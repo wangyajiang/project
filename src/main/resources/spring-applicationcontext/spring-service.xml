@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="focusMapService" class="com.pro.service.impl.FocusMapServiceImpl"></bean>
+	<bean id="itemsService" class="com.pro.service.impl.ItemsServiceImpl"></bean>
+	<bean id="itemsPicsService" class="com.pro.service.impl.ItemsPicsServiceImpl"></bean>
+	<bean id="itemTypeService" class="com.pro.service.impl.ItemTypeServiceImpl"></bean>
+	<bean id="itemsActiveService" class="com.pro.service.impl.ItemsActiveServiceImpl"></bean>
+	<bean id="itemsActivePicsService" class="com.pro.service.impl.ItemsActivePicsServiceImpl"></bean>
+	<bean id="activeOrderService" class="com.pro.service.impl.ActiveOrderServiceImpl"></bean>
+	<bean id="activeBillService" class="com.pro.service.impl.ActiveBillServiceImpl"></bean>
+	<bean id="userService" class="com.pro.service.impl.UserServiceImpl"></bean>
+	<bean id="userPointService" class="com.pro.service.impl.UserPointServiceImpl"></bean>
+	<bean id="userPointLogService" class="com.pro.service.impl.UserPointLogServiceImpl"></bean>
+</beans>
+
+
+
+

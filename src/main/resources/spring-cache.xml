@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
+    <bean id="redisPool" class="com.tool.cache.redis.RedisPool" init-method="initialize" destroy-method="shutDown">
+		<property name="server" value="${redis.server}"></property>
+		<property name="maxTotal" value="${redis.total}"></property>
+		<property name="maxIdle" value="${redis.idle}"></property>
+		<property name="maxWaitMillis" value="${redis.timeout}"></property>
+	</bean>
+	
+	<bean id="cacheSource" class="com.tool.cache.impl.RedisServiceImpl">
+		<constructor-arg ref="redisPool"></constructor-arg>
+	</bean>
+
+	<bean id="methodCacheInterceptor" class="com.tool.cache.interceptor.MethodCacheInterceptor">
+		<property name="cacheService" ref="cacheSource" />
+		<property name="cache" value="true"/>
+	</bean>
+	<bean class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice" ref="methodCacheInterceptor" />
+		<property name="patterns">
+			<list>
+				<value>.*Dao.*</value>
+			</list>
+		</property>
+	</bean>
+	
+</beans>

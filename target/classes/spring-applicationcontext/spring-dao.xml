@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="focusMapDao" class="com.pro.dao.impl.FocusMapDaoImpl"></bean>
+	<bean id="itemsDao" class="com.pro.dao.impl.ItemsDaoImpl"></bean>
+	<bean id="itemsPicsDao" class="com.pro.dao.impl.ItemsPicsDaoImpl"></bean>
+	<bean id="itemTypeDao" class="com.pro.dao.impl.ItemTypeDaoImpl"></bean>
+	<bean id="itemsActiveDao" class="com.pro.dao.impl.ItemsActiveDaoImpl"></bean>
+	<bean id="itemsActivePicsDao" class="com.pro.dao.impl.ItemsActivePicsDaoImpl"></bean>
+	<bean id="activeOrderDao" class="com.pro.dao.impl.ActiveOrderDaoImpl"></bean>
+	<bean id="activeBillDao" class="com.pro.dao.impl.ActiveBillDaoImpl"></bean>
+	<bean id="userDao" class="com.pro.dao.impl.UserDaoImpl"></bean>
+	<bean id="userPointDao" class="com.pro.dao.impl.UserPointDaoImpl"></bean>
+	<bean id="userPointLogDao" class="com.pro.dao.impl.UserPointLogDaoImpl"></bean>
+</beans>
