@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+    	<!-- true是topic，false是queue，默认是false，此处显示写出false -->  
+        <property name="pubSubDomain" value="${jms.pubSubDomain}"/>
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="timeToLive" value="${jms.timeToLive}"/>
+        <property name="deliveryPersistent" value="${jms.deliveryPersistent}"/>
+    </bean>
+    
+    <bean id="connectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
+		<property name="connectionFactory">
+			<bean class="org.apache.activemq.ActiveMQConnectionFactory">			                                 
+				<property name="brokerURL" value="${jms.server}"/>
+				<property name="useAsyncSend" value="${jms.userAsyncSend}"/>
+			</bean>
+		</property>
+	</bean>	
+    <!-- 定义消息队列（Queue） -->  
+    <bean id="logQueueDestination" class="org.apache.activemq.command.ActiveMQQueue">  
+        <!-- 设置消息队列的名字 -->  
+        <constructor-arg>  
+            <value>queueLog</value>  
+        </constructor-arg>  
+    </bean>  
+    
+    <!-- 消息发布器 -->
+    <bean id="producerService" class="com.tool.jms.impl.ProducerServiceImpl" />
+    <bean id="jmsUtils" class="com.tool.jms.JmsUtils">
+        <constructor-arg index="0" ref="producerService"/>
+        <constructor-arg index="1" ref="logQueueDestination"/>
+    </bean>
+    
+    <!-- 显示注入消息监听容器（Queue），配置连接工厂，监听的目标是demoQueueDestination，监听器是上面定义的监听器 -->  
+    <bean id="queueListenerContainer"  
+        class="org.springframework.jms.listener.DefaultMessageListenerContainer">  
+        <property name="connectionFactory" ref="connectionFactory" />  
+        <property name="destination" ref="logQueueDestination" />  
+        <property name="messageListener" ref="queueMessageListener" />  
+    </bean> 
+    <!--加入监听器  -->  
+    <bean id="queueMessageListener" class="com.tool.jms.listener.QueueMessageListener" />
+    
+</beans>

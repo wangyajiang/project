@@ -1,0 +1,205 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.api</groupId>
+  <artifactId>myapi</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+
+  
+  <!-- 总控文件 -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>4.3.3.RELEASE</spring.version>
+		<slf4j.version>1.7.7</slf4j.version>
+		<poi.version>3.15</poi.version>
+		<javax.servlet.version>3.1.0</javax.servlet.version>
+	</properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- jedis -->
+    <dependency>  
+        <groupId>org.springframework.data</groupId>  
+        <artifactId>spring-data-redis</artifactId>  
+        <version>1.0.2.RELEASE</version>  
+    </dependency>  
+	<dependency>
+           <groupId>redis.clients</groupId>
+           <artifactId>jedis</artifactId>
+           <version>2.5.1</version>
+    </dependency>
+    <!-- log4j -->
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-api</artifactId>
+	    <version>2.7</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-core</artifactId>
+	    <version>2.7</version>
+	</dependency>
+		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
+	<dependency>
+	    <groupId>log4j</groupId>
+	    <artifactId>log4j</artifactId>
+	    <version>1.2.17</version>
+	</dependency>
+
+	<dependency>
+	    <groupId>net.sf.json-lib</groupId>
+	    <artifactId>json-lib</artifactId>
+	    <version>2.4</version>
+	</dependency>
+	<!-- json  -->
+	<dependency>
+		<groupId>com.alibaba</groupId>
+		<artifactId>fastjson</artifactId>
+		<version>1.2.7</version>
+	</dependency>
+	
+	<!-- mysql -->
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>5.1.12</version>
+	</dependency>
+
+	<!-- datasource -->
+	<dependency>
+		<groupId>commons-dbcp</groupId>
+		<artifactId>commons-dbcp</artifactId>
+		<version>1.4</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/quartz/quartz -->
+	<dependency>
+	    <groupId>quartz</groupId>
+	    <artifactId>quartz</artifactId>
+	    <version>1.5.2</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch -->
+	<dependency>
+	    <groupId>org.elasticsearch.client</groupId>
+	    <artifactId>transport</artifactId>
+	    <version>5.2.2</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+	<dependency>
+	    <groupId>org.jsoup</groupId>
+	    <artifactId>jsoup</artifactId>
+	    <version>1.10.2</version>
+	</dependency>
+	
+	<!-- jms -->
+	<dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-jms</artifactId>  
+        <version>${spring.version}</version>  
+    </dependency>
+    <dependency>  
+        <groupId>org.apache.activemq</groupId>  
+        <artifactId>activemq-core</artifactId>  
+        <version>5.7.0</version>  
+    </dependency>
+    
+    <!-- https://mvnrepository.com/artifact/com.rabbitmq/amqp-client -->
+	<dependency>
+	    <groupId>com.rabbitmq</groupId>
+	    <artifactId>amqp-client</artifactId>
+	    <version>4.1.1</version>
+	</dependency>
+    
+    <!-- https://mvnrepository.com/artifact/com.alibaba.rocketmq/rocketmq-client -->
+	<dependency>
+	    <groupId>com.alibaba.rocketmq</groupId>
+	    <artifactId>rocketmq-client</artifactId>
+	    <version>3.5.9</version>
+	</dependency>
+    
+        <!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl -->
+	<dependency>
+	    <groupId>org.codehaus.jackson</groupId>
+	    <artifactId>jackson-mapper-asl</artifactId>
+	    <version>1.9.13</version>
+	</dependency>
+        
+    <!-- https://mvnrepository.com/artifact/javax.jms/jms -->
+	<dependency>
+	    <groupId>javax.jms</groupId>
+	    <artifactId>jms</artifactId>
+	    <version>1.1</version>
+	</dependency>
+	
+	<!-- log4j -->
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-api</artifactId>
+		<version>${slf4j.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-log4j12</artifactId>
+		<version>${slf4j.version}</version>
+	</dependency>
+    
+    <!-- poi 2003 -->
+    <dependency>
+		<groupId>org.apache.poi</groupId>
+		<artifactId>poi</artifactId>
+		<version>${poi.version}</version>
+	</dependency>
+	<!--servlet Api-->
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>javax.servlet-api</artifactId>
+		<version>${javax.servlet.version}</version>
+	</dependency>
+   
+   <!-- ssh 上传服务器https://mvnrepository.com/artifact/com.jcraft/jsch -->
+	<dependency>
+	    <groupId>com.jcraft</groupId>
+	    <artifactId>jsch</artifactId>
+	    <version>0.1.54</version>
+	</dependency>
+   
+  </dependencies>
+  
+  <profiles>
+    <profile>
+      <id>jdk-1.8</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+            <jdk>1.8</jdk>
+        </activation>
+        <properties>
+            <maven.compiler.source>1.8</maven.compiler.source>
+            <maven.compiler.target>1.8</maven.compiler.target>
+			<maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+        </properties>
+    </profile>
+  </profiles>
+  
+	<build>
+		<resources>
+			<resource>
+				<directory>resources</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>resources</directory>
+			</resource>
+		</resources>
+	</build>
+
+</project>
